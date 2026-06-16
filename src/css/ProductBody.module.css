@@ -1,0 +1,37 @@
+.body {
+  min-height: 85vh;
+  padding: 50px 0px;
+}
+
+
+.grid {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(1, 250px);
+  gap: 35px;
+}
+
+
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 250px);
+    gap: 35px;
+  }
+}
+
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 300px);
+    gap: 35px;
+  }
+}
+
+
+@media (min-width: 1450px) {
+  .grid {
+    grid-template-columns: repeat(4, 250px);
+    gap: 35px;
+  }
+}

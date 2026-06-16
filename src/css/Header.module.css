@@ -1,0 +1,7 @@
+.body {
+  background: #cb22ff;
+  background: linear-gradient(-90deg, rgba(203, 34, 255, 1) 23%, rgba(222, 115, 255, 1) 82%);
+  padding: 30px 0px;
+  color: #fff;
+}
+

@@ -1,0 +1,29 @@
+.card {
+  border: 1px solid #000;
+  display: block;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.img {
+  max-width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.img img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.raiting{
+  padding: 20px 0px;
+  display: flex;
+}
