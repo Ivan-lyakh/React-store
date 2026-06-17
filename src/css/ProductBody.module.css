@@ -1,10 +1,10 @@
 .body {
-  min-height: 85vh;
-  padding: 50px 0px;
+  flex: 1;
 }
 
 
 .grid {
+  padding: 50px;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(1, 250px);

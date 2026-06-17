@@ -8,11 +8,20 @@ export const useProduct = () => {
 
   const [error, setError] = useState(false)
 
+  const [loading, setLoading] = useState(false)
+
+  function resetError() {
+    setError(false)
+  }
+
   useEffect(() => {
 
     async function loadData() {
 
       try {
+
+        setLoading(true)
+
         const data = await getProduct()
 
         setAllProduct(data)
@@ -24,6 +33,10 @@ export const useProduct = () => {
         setError(true)
       }
 
+      finally {
+        setLoading(false)
+      }
+
     }
 
     loadData()
@@ -31,8 +44,6 @@ export const useProduct = () => {
   }, [])
 
 
-
-
-  return { allProduct , error }
+  return { allProduct, error, loading, resetError , setAllProduct }
 
 }

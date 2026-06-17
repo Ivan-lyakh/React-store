@@ -1,5 +1,6 @@
 import type { Product } from "../types/ProductTypes"
 import styles from '../css/ProductCard.module.css'
+import { memo } from "react"
 
 type Props = {
   product: Product
@@ -21,9 +22,8 @@ function controlRaiting(value: number) {
 
 }
 
-export const ProductCard = (props: Props) => {
+export const ProductCard = ({ product }: Props) => {
 
-  const product = props.product
 
   return (
 
@@ -40,7 +40,7 @@ export const ProductCard = (props: Props) => {
 
       <div className={styles.body}>
         <h2>{product.title}</h2>
-        <h3>{product.price}</h3>
+        <h3>{product.price}$</h3>
       </div>
 
       <div className={styles.button}>
@@ -52,3 +52,6 @@ export const ProductCard = (props: Props) => {
     </div>
   )
 }
+
+
+export default memo(ProductCard);

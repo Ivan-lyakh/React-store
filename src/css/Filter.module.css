@@ -1,0 +1,11 @@
+.filter{
+  background-color: rgb(148, 146, 146);
+  padding: 20px 0px;
+  color: #fff;
+}
+
+.fast {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

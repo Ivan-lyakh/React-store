@@ -1,0 +1,53 @@
+.card {
+  border: 1px solid #000;
+  display: block;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+
+.img {
+  max-width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.img span {
+  background-color: rgb(159, 154, 154);
+  height: 85%;
+  width: 100%;
+}
+
+.price {
+  width: 100%;
+  padding-bottom: 15px;
+}
+
+.price span {
+  display: block;
+  background-color: rgb(159, 154, 154);
+  width: 50%;
+  height: 15px;
+}
+
+
+.raiting {
+  padding-bottom: 15px;
+  display: flex;
+}
+
+.raiting span {
+  background-color: rgb(159, 154, 154);
+  width: 80%;
+  height: 15px;
+}
+
+.button {
+  margin-top: 15px;
+}
