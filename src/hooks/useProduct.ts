@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react"
 import { getProduct } from "../dal/api"
+import type { Product } from "../types/ProductTypes"
 
 
 export const useProduct = () => {
 
-  const [allProduct, setAllProduct] = useState([])
+  const [allProduct, setAllProduct] = useState<Product[]>([])
+
+  console.log(allProduct)
+
+  const [originalAllProduct, setoriginalAllProduct] = useState<Product[]>([])
 
   const [error, setError] = useState(false)
 
@@ -26,10 +31,12 @@ export const useProduct = () => {
 
         setAllProduct(data)
 
+        setoriginalAllProduct(data)
+
       }
 
       catch (error) {
-        console.log(`тестовая ошибка:${error}`)
+        console.log(`получение товаров:${error}`)
         setError(true)
       }
 
@@ -43,7 +50,6 @@ export const useProduct = () => {
 
   }, [])
 
-
-  return { allProduct, error, loading, resetError , setAllProduct }
+  return { allProduct, error, loading, resetError, setAllProduct , originalAllProduct }
 
 }

@@ -29,24 +29,26 @@ export const ProductCard = ({ product }: Props) => {
 
     <div className={styles.card}>
 
-      <div className={styles.img}>
-        <img src={product.image} alt="#" />
-      </div>
+      <div className={styles.wrapper}>
+        <div className={styles.img}>
+          <img src={product.image} alt="#" />
+        </div>
 
-      <div className={styles.raiting}>
-        <h2>{controlRaiting(product.rating.rate)}</h2>
-        <h2>({product.rating.count})</h2>
-      </div>
+        <div className={styles.raiting}>
+          <h2>{controlRaiting(product.rating.rate)}</h2>
+          <h2 className='text'>({product.rating.count})</h2>
+        </div>
 
-      <div className={styles.body}>
-        <h2>{product.title}</h2>
-        <h3>{product.price}$</h3>
-      </div>
+        <div className={styles.body}>
+          <h2 className='title'>{product.title}</h2>
+        </div>
 
-      <div className={styles.button}>
-        <button>
-          Add to cart
-        </button>
+        <div className={styles.button}>
+          <h3 className='text'>{product.price}$</h3>
+          <button className="text">
+            Add to cart
+          </button>
+        </div>
       </div>
 
     </div>

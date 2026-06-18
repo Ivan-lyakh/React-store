@@ -4,9 +4,11 @@ import styles from '../css/Header.module.css'
 
 export function Header() {
   return (
-    <div className={styles.body}>
+    <div className={styles.header}>
       <div className="container">
-        <h2 className='title'>Header</h2>
+        <div className={styles.body}>
+          <h2 className='title'>Header</h2>
+        </div>
       </div>
     </div>
   )

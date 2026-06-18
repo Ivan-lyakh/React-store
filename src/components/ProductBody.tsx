@@ -10,9 +10,9 @@ import { Filter } from './Filter'
 
 export const ProductBody = () => {
 
-  const { allProduct, error, loading, resetError, setAllProduct } = useProduct()
+  const { allProduct, error, loading, resetError, setAllProduct , originalAllProduct } = useProduct()
 
-  const { actionFilter } = useFilter()
+  const { actionFilter } = useFilter(allProduct, setAllProduct , originalAllProduct )
 
   if (error) {
     return (
@@ -38,7 +38,9 @@ export const ProductBody = () => {
                   key={item.id}
                   product={item}
                 />
-                : <SkeletonCard />
+                : <SkeletonCard
+                  key={item.id}
+                />
             )
           })}
 
