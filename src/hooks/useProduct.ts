@@ -7,8 +7,6 @@ export const useProduct = () => {
 
   const [allProduct, setAllProduct] = useState<Product[]>([])
 
-  console.log(allProduct)
-
   const [originalAllProduct, setoriginalAllProduct] = useState<Product[]>([])
 
   const [error, setError] = useState(false)
@@ -50,6 +48,6 @@ export const useProduct = () => {
 
   }, [])
 
-  return { allProduct, error, loading, resetError, setAllProduct , originalAllProduct }
+  return { allProduct, error, loading, resetError, setAllProduct, originalAllProduct }
 
 }

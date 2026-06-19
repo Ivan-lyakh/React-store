@@ -1,12 +1,15 @@
 import type { Product } from "../types/ProductTypes"
 import styles from '../css/ProductCard.module.css'
 import { memo } from "react"
+import { useDispatch } from "react-redux"
+import { setSelectedProduct } from "../sliceStore/selectedProduct"
+import { Link } from "react-router-dom";
 
 type Props = {
   product: Product
 }
 
-function controlRaiting(value: number) {
+export function controlRaiting(value: number) {
 
   const rating = Math.round(value)
 
@@ -24,23 +27,28 @@ function controlRaiting(value: number) {
 
 export const ProductCard = ({ product }: Props) => {
 
+  const dispatch = useDispatch()
+
 
   return (
 
     <div className={styles.card}>
 
       <div className={styles.wrapper}>
-        <div className={styles.img}>
-          <img src={product.image} alt="#" />
-        </div>
 
-        <div className={styles.raiting}>
-          <h2>{controlRaiting(product.rating.rate)}</h2>
-          <h2 className='text'>({product.rating.count})</h2>
-        </div>
+        <div onClick={() => dispatch(setSelectedProduct(product))}>
+          <div className={styles.img}>
+            <img src={product.image} alt="#" />
+          </div>
 
-        <div className={styles.body}>
-          <h2 className='title'>{product.title}</h2>
+          <div className={styles.raiting}>
+            <h2>{controlRaiting(product.rating.rate)}</h2>
+            <h2 className='text'>({product.rating.count})</h2>
+          </div>
+
+          <div className={styles.body}>
+            <h2 className='title'>{product.title}</h2>
+          </div>
         </div>
 
         <div className={styles.button}>

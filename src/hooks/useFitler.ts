@@ -13,8 +13,6 @@ export const useFilter = (allProduct: Product[], setAllProduct: Dispatch<SetStat
 
   const [selectedCategories, setSelectedCategories] = useState("")
 
-  console.log(selectedCategories)
-
   useEffect(() => {
 
     function loadData() {

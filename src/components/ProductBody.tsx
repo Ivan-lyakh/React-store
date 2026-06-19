@@ -6,18 +6,29 @@ import { ProductCard } from './ProductCard'
 import { SkeletonCard } from './SkeletonCard'
 import { Error } from './Error'
 import { Filter } from './Filter'
-
+import { ProductDetails } from './ProductDetails'
+import { useSelector } from 'react-redux'
 
 export const ProductBody = () => {
 
-  const { allProduct, error, loading, resetError, setAllProduct , originalAllProduct } = useProduct()
+  const { allProduct, error, loading, resetError, setAllProduct, originalAllProduct } = useProduct()
 
-  const { actionFilter } = useFilter(allProduct, setAllProduct , originalAllProduct )
+  const { actionFilter } = useFilter(allProduct, setAllProduct, originalAllProduct)
+
+  const selectedProduct = useSelector((state: any) => state.selectedProduct.selectedProduct)
 
   if (error) {
     return (
       <Error
         resetError={resetError}
+      />
+    )
+  }
+
+  if (selectedProduct !== null) {
+    return (
+      <ProductDetails
+        product={selectedProduct}
       />
     )
   }
