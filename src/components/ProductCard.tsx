@@ -3,7 +3,8 @@ import styles from '../css/ProductCard.module.css'
 import { memo } from "react"
 import { useDispatch } from "react-redux"
 import { setSelectedProduct } from "../sliceStore/selectedProduct"
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
+
 
 type Props = {
   product: Product
@@ -29,6 +30,9 @@ export const ProductCard = ({ product }: Props) => {
 
   const dispatch = useDispatch()
 
+  const navigate = useNavigate();
+
+
 
   return (
 
@@ -36,7 +40,10 @@ export const ProductCard = ({ product }: Props) => {
 
       <div className={styles.wrapper}>
 
-        <div onClick={() => dispatch(setSelectedProduct(product))}>
+        <div onClick={() => {
+          dispatch(setSelectedProduct(product))
+          navigate(`/product/${product.id}`)
+        }}>
           <div className={styles.img}>
             <img src={product.image} alt="#" />
           </div>

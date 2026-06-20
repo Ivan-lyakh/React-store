@@ -3,7 +3,6 @@ import type { Product } from '../types/ProductTypes'
 import { controlRaiting } from './ProductCard'
 
 
-
 type Props = {
   product: Product
 }

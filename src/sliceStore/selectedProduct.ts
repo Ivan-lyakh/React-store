@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { Product } from "../types/ProductTypes";
 
-type SelectedProduct = Product | null
+
+
 
 const selectedProductSlice = createSlice({
   name: "selectedProduct",

@@ -6,8 +6,7 @@ import { ProductCard } from './ProductCard'
 import { SkeletonCard } from './SkeletonCard'
 import { Error } from './Error'
 import { Filter } from './Filter'
-import { ProductDetails } from './ProductDetails'
-import { useSelector } from 'react-redux'
+
 
 export const ProductBody = () => {
 
@@ -15,20 +14,10 @@ export const ProductBody = () => {
 
   const { actionFilter } = useFilter(allProduct, setAllProduct, originalAllProduct)
 
-  const selectedProduct = useSelector((state: any) => state.selectedProduct.selectedProduct)
-
   if (error) {
     return (
       <Error
         resetError={resetError}
-      />
-    )
-  }
-
-  if (selectedProduct !== null) {
-    return (
-      <ProductDetails
-        product={selectedProduct}
       />
     )
   }
