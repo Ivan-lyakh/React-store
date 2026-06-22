@@ -1,0 +1,78 @@
+.auth {
+  background: #cb22ff;
+  background: linear-gradient(-90deg, rgba(203, 34, 255, 1) 23%, rgba(222, 115, 255, 1) 82%);
+  color: #fff;
+  padding: 50px 0px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.input {
+  padding: 10px 15px;
+  font-size: 17px;
+}
+
+.title {
+  font-size: 35px;
+  text-align: center;
+}
+
+.body {
+  padding: 50px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.bodyForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+
+.orientation {
+  padding: 40px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.orientation h2 {
+  font-size: 20px;
+}
+
+.orientation select {
+  margin-left: 20px;
+  font-size: 15px;
+  padding: 5px 10px;
+}
+
+.column {
+  display: flex;
+  justify-content: center;
+}
+
+.column h3{
+  color: rgb(255, 0, 0);
+  font-size: 15px;
+  background-color: #ffffff7d;
+  padding: 10px;
+}
+
+.column button {
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.span {
+  font-size: 20px;
+  text-align: center;
+}
+
+.span span {
+  cursor: pointer;
+  color: orange;
+}

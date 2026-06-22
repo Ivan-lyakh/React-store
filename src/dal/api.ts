@@ -1,3 +1,14 @@
+import { supabase } from "../supaBaseClient";
+
+export const getUser = async () => {
+
+
+  const { data } = await supabase.auth.getUser()
+
+  console.log(data)
+
+  return data.user
+}
 
 
 export async function getProduct() {

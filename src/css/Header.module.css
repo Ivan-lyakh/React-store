@@ -9,6 +9,12 @@
   z-index: 100;
 }
 
+.body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .body h2 {
   font-size: 25px;
 }
@@ -18,4 +24,17 @@
   display: inline-block;
   cursor: pointer;
   color: #fff;
+}
+
+
+
+.logout{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.logout button {
+  padding: 5px 15px;
+  
 }

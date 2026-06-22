@@ -8,11 +8,13 @@ import { Error } from './Error'
 import { Filter } from './Filter'
 
 
+
 export const ProductBody = () => {
 
   const { allProduct, error, loading, resetError, setAllProduct, originalAllProduct } = useProduct()
 
   const { actionFilter } = useFilter(allProduct, setAllProduct, originalAllProduct)
+
 
   if (error) {
     return (
