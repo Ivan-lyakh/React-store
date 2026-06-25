@@ -28,7 +28,7 @@
 
 
 
-.logout{
+.logout {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -36,5 +36,70 @@
 
 .logout button {
   padding: 5px 15px;
-  
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+}
+
+.logout span {
+  font-family: "Montserrat", sans-serif;
+}
+
+.userName h2{
+  font-size: 18px;
+}
+
+.bodyCartImg{
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+}
+
+.bodyCartImg img {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.cart{
+  padding: 20px ;
+  color: #000;
+  position: absolute;
+  top: 40px;
+  width: 300px;
+  left: -178px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px solid grey;
+}
+
+.cart ul li{
+  padding: 25px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart ul li img {
+  max-width: 30px;
+}
+
+
+.bodyCartImg h2{
+  font-size: 15px;
+}
+
+.lengthCart {
+  font-weight: 500;
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  right: -20%;
+}
+
+
+.cartImages {
+  display: flex;
+  align-items: center;
 }

@@ -1,0 +1,10 @@
+.info {
+  border: 1px solid green;
+  position: sticky;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  height: 100px;
+}
+
+

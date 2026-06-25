@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
 import { getProduct } from "../dal/api"
 import type { Product } from "../types/ProductTypes"
-
+import { useDispatch } from "react-redux";
+import { setProducts } from "../sliceStore/product";
 
 export const useProduct = () => {
+
+  const dispatch = useDispatch();
 
   const [allProduct, setAllProduct] = useState<Product[]>([])
 
@@ -30,6 +33,8 @@ export const useProduct = () => {
         setAllProduct(data)
 
         setoriginalAllProduct(data)
+
+        dispatch(setProducts(data));
 
       }
 

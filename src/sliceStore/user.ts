@@ -1,14 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { User } from "@supabase/supabase-js";
 
+type UsersState = {
+  users: User | null;
+  errorUsers: string | null;
+};
 
-
+const initialState: UsersState = {
+  users: null,
+  errorUsers: null,
+};
 
 const usersSlice = createSlice({
   name: "users",
-  initialState: {
-    users: null,
-    errorUsers: null
-  },
+  initialState,
   reducers: {
     setUsers: (state, action) => {
       state.users = action.payload

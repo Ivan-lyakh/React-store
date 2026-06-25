@@ -4,7 +4,9 @@ import { memo } from "react"
 import { useDispatch } from "react-redux"
 import { setSelectedProduct } from "../sliceStore/selectedProduct"
 import { useNavigate } from "react-router-dom"
-
+import { useSelector } from "react-redux"
+import type { RootState } from '../store/store'
+import { useCart } from "../hooks/useCart"
 
 type Props = {
   product: Product
@@ -26,13 +28,16 @@ export function controlRaiting(value: number) {
 
 }
 
+
 export const ProductCard = ({ product }: Props) => {
+
+  const user = useSelector((state: RootState) => state.user.users);
+
+  const { actionCart } = useCart()
 
   const dispatch = useDispatch()
 
   const navigate = useNavigate();
-
-
 
   return (
 
@@ -60,7 +65,24 @@ export const ProductCard = ({ product }: Props) => {
 
         <div className={styles.button}>
           <h3 className='text'>{product.price}$</h3>
-          <button className="text">
+          <button
+            className="text"
+            onClick={async () => {
+
+              if (user === null) {
+                throw new Error("Что бы добавить товар в корзину , нужно авторизоваться!")
+              }
+
+              try {
+                await actionCart.check(user.id, product.id)
+              }
+
+              catch (error) {
+
+              }
+
+            }}
+          >
             Add to cart
           </button>
         </div>

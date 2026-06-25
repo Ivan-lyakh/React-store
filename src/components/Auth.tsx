@@ -20,9 +20,9 @@ export const Auth = (props: Props) => {
 
   const [registerMode, setRegisterMode] = useState(false)
 
-  const [errorLogin, setErrorLogin] = useState<null | string>(null)
+  const [error, setError] = useState<null | string>(null)
 
-  const [errorRegister, setErrorRegister] = useState<null | string>(null)
+  const [hidePassword, setHidePassword] = useState(true)
 
   const toggleMode = () => {
     setRegisterMode(prev => !prev);
@@ -39,17 +39,13 @@ export const Auth = (props: Props) => {
 
         <div className={styles.body}>
 
-          {errorLogin !== null &&
+          {error !== null &&
             <div className={styles.column}>
-              <h3>{errorLogin}</h3>
+              <h3>{error}</h3>
             </div>
           }
 
-          {errorRegister &&
-            <div className={styles.column}>
-              <h3>{errorRegister}</h3>
-            </div>
-          }
+
 
 
 
@@ -60,17 +56,25 @@ export const Auth = (props: Props) => {
                 className={styles.input} type="email"
                 placeholder='*email'
                 required
-                onChange={(e) => action.setEmail(e.target.value)} />
+                onChange={(e) => action.setEmail(e.target.value)} /> 
             </div>
 
             <div className={styles.column}>
-              <input
-                value={atributes.password}
-                required
-                className={styles.input}
-                type="text"
-                placeholder='*password'
-                onChange={(e) => action.setPassword(e.target.value)} />
+              <div className={styles.passwordBody}>
+                <input
+                  value={atributes.password}
+                  required
+                  className={styles.input}
+                  type={hidePassword ? "password" : "text"}
+                  placeholder='*password'
+                  onChange={(e) => action.setPassword(e.target.value)} />
+                <button
+                  className={styles.password}
+                  onClick={() => {
+                    setHidePassword(prev => !prev)
+                  }}>
+                  {hidePassword ? "🙈" : "🙉"}</button>
+              </div>
             </div>
 
             {registerMode &&
@@ -108,7 +112,7 @@ export const Auth = (props: Props) => {
                 <button
                   onClick={async () => {
 
-                    setErrorRegister(null)
+                    setError(null)
 
                     try {
 
@@ -127,7 +131,7 @@ export const Auth = (props: Props) => {
                     catch (error) {
                       if (error instanceof Error) {
                         console.log(`ОшибкаRegister: ${error.message}`)
-                        setErrorRegister(translateError(error.message))
+                        setError(translateError(error.message))
                       }
                     }
 
@@ -138,7 +142,7 @@ export const Auth = (props: Props) => {
 
                 <button
                   onClick={async () => {
-                    setErrorLogin(null)
+                    setError(null)
 
                     try {
 
@@ -150,7 +154,7 @@ export const Auth = (props: Props) => {
                     catch (error) {
 
                       if (error instanceof Error) {
-                        setErrorLogin(translateError(error.message))
+                        setError(translateError(error.message))
                       }
 
                     }
@@ -171,14 +175,14 @@ export const Auth = (props: Props) => {
                     <span onClick={() => {
                       toggleMode()
                       reset()
-                      setErrorRegister(null)
+                      setError(null)
                     }}> Войти </span>
                   </h2>
                   : <h2>Нет аккаунта?
                     <span onClick={() => {
                       toggleMode()
                       reset()
-                      setErrorLogin(null)
+                      setError(null)
                     }}> Создайте </span> его прямо сейчас! </h2>}
               </div>
             </div>

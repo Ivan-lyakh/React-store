@@ -1,7 +1,9 @@
 import styles from '../css/ProductDetails.module.css'
 import type { Product } from '../types/ProductTypes'
 import { controlRaiting } from './ProductCard'
-
+import { useSelector } from 'react-redux'
+import { useCart } from '../hooks/useCart'
+import { useEffect } from 'react'
 
 type Props = {
   product: Product
@@ -9,6 +11,15 @@ type Props = {
 
 
 export const ProductDetails = ({ product }: Props) => {
+
+
+  const user = useSelector(
+    (state: any) => state.user.users
+  );
+
+
+  const { actionCart } = useCart()
+
 
   return (
     <div className={styles.detail}>
@@ -33,7 +44,25 @@ export const ProductDetails = ({ product }: Props) => {
             </div>
             <div className={styles.price}>
               <h2 className='title'>{product.price}$</h2>
-              <button className={styles.button}>Add to card</button>
+              <button
+                className={styles.button}
+                onClick={async () => {
+
+                  if (user === null) {
+                    throw new Error("Что бы добавить товар в корзину , нужно авторизоваться!")
+                  }
+
+                  try {
+                    await actionCart.check(user.id, product.id)
+                  }
+
+                  catch (error) {
+                    console.log(error)
+                  }
+
+                }
+                }
+              >Add to card</button>
             </div>
           </div>
 

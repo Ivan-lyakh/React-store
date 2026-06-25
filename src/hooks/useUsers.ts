@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
 import { supabase } from "../supaBaseClient";
 import { resetUsers, setErrorUsers, setUsers } from "../sliceStore/user";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getUser } from "../dal/api";
+import { resetCart } from "../sliceStore/Cart";
 
 
 export type ActionUsers = {
@@ -70,6 +71,7 @@ export const useUsers = () => {
     }
 
     dispatch(setUsers(data.user))
+    
     return true
   }
 
@@ -82,6 +84,7 @@ export const useUsers = () => {
     }
 
     dispatch(resetUsers())
+    dispatch(resetCart())
 
   }
 
