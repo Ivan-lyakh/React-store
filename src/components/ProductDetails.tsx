@@ -3,7 +3,7 @@ import type { Product } from '../types/ProductTypes'
 import { controlRaiting } from './ProductCard'
 import { useSelector } from 'react-redux'
 import { useCart } from '../hooks/useCart'
-import { useEffect } from 'react'
+import { useInfo } from '../hooks/useInfo'
 
 type Props = {
   product: Product
@@ -12,6 +12,7 @@ type Props = {
 
 export const ProductDetails = ({ product }: Props) => {
 
+  const { showInfo } = useInfo();
 
   const user = useSelector(
     (state: any) => state.user.users
@@ -49,16 +50,21 @@ export const ProductDetails = ({ product }: Props) => {
                 onClick={async () => {
 
                   if (user === null) {
-                    throw new Error("Что бы добавить товар в корзину , нужно авторизоваться!")
+
+                    showInfo(
+                      "Необходимо авторизоваться",
+                      false
+                    )
+
+                    return
                   }
 
-                  try {
-                    await actionCart.check(user.id, product.id)
-                  }
 
-                  catch (error) {
-                    console.log(error)
-                  }
+                  await actionCart.check(
+                    user.id,
+                    product.id
+                  )
+
 
                 }
                 }

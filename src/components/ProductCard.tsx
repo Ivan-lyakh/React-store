@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import type { RootState } from '../store/store'
 import { useCart } from "../hooks/useCart"
+import { useInfo } from "../hooks/useInfo"
+
 
 type Props = {
   product: Product
@@ -30,6 +32,8 @@ export function controlRaiting(value: number) {
 
 
 export const ProductCard = ({ product }: Props) => {
+
+  const { showInfo } = useInfo();
 
   const user = useSelector((state: RootState) => state.user.users);
 
@@ -70,16 +74,19 @@ export const ProductCard = ({ product }: Props) => {
             onClick={async () => {
 
               if (user === null) {
-                throw new Error("Что бы добавить товар в корзину , нужно авторизоваться!")
+
+                showInfo(
+                  "Необходимо авторизоваться",
+                  false
+                )
+
+                return
               }
 
-              try {
-                await actionCart.check(user.id, product.id)
-              }
-
-              catch (error) {
-
-              }
+              await actionCart.check(
+                user.id,
+                product.id
+              )
 
             }}
           >

@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react"
 import { type Dispatch, type SetStateAction } from "react"
 import type { Product } from "../types/ProductTypes"
+import { useDispatch, useSelector } from "react-redux"
+import { setProducts } from "../sliceStore/product"
+
 
 export type ActionFilter = {
   setFastFilter: Dispatch<SetStateAction<string>>
   setSelectedCategories: Dispatch<SetStateAction<string>>
 }
 
-export const useFilter = (allProduct: Product[], setAllProduct: Dispatch<SetStateAction<Product[]>>, originalAllProduct: Product[]) => {
+export const useFilter = (originalAllProduct: Product[]) => {
+
+  const dispatch = useDispatch()
+
+  const allProduct = useSelector(
+    (state: any) => state.products.products
+  )
 
   const [fastFilter, setFastFilter] = useState<string>("")
 
@@ -18,13 +27,13 @@ export const useFilter = (allProduct: Product[], setAllProduct: Dispatch<SetStat
     function loadData() {
 
       if (selectedCategories === "all") {
-        setAllProduct(originalAllProduct)
+        dispatch(setProducts(originalAllProduct))
         return
       }
 
       const filteredArray = originalAllProduct.filter((item: Product) => item.category === selectedCategories)
 
-      setAllProduct([...filteredArray])
+      dispatch(setProducts([...filteredArray]))
     }
 
     loadData()
@@ -48,7 +57,7 @@ export const useFilter = (allProduct: Product[], setAllProduct: Dispatch<SetStat
 
     const filteredArr: Product[] = action()
 
-    setAllProduct(filteredArr)
+    dispatch(setProducts(filteredArr))
 
   }, [fastFilter])
 

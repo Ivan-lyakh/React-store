@@ -8,8 +8,6 @@ export const useProduct = () => {
 
   const dispatch = useDispatch();
 
-  const [allProduct, setAllProduct] = useState<Product[]>([])
-
   const [originalAllProduct, setoriginalAllProduct] = useState<Product[]>([])
 
   const [error, setError] = useState(false)
@@ -29,8 +27,6 @@ export const useProduct = () => {
         setLoading(true)
 
         const data = await getProduct()
-
-        setAllProduct(data)
 
         setoriginalAllProduct(data)
 
@@ -53,6 +49,6 @@ export const useProduct = () => {
 
   }, [])
 
-  return { allProduct, error, loading, resetError, setAllProduct, originalAllProduct }
+  return {  error, loading, resetError,  originalAllProduct }
 
 }

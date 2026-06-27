@@ -5,6 +5,7 @@ export type CartItem = {
   product_id: number;
   user_id: string;
   quantity: number;
+  price: number,
 };
 
 type CartState = {

@@ -2,12 +2,13 @@
 import { useDispatch } from "react-redux"
 import { supabase } from "../supaBaseClient"
 import { useSelector } from "react-redux"
-import { setCart } from "../sliceStore/Cart"
-
+import { setCart } from "../sliceStore/cart"
+import { useInfo } from "./useInfo"
 
 
 export const useCart = () => {
 
+  const { showInfo } = useInfo();
 
   const dispatch = useDispatch()
 
@@ -52,11 +53,27 @@ export const useCart = () => {
     if (error) throw new Error(error.message)
   }
 
+  const clearCart = async (userId: string) => {
+    const { error } = await supabase
+      .from("Cart")
+      .delete()
+      .eq("user_id", userId)
+
+    if (error) {
+      throw new Error(error.message)
+    }
+  }
+
+
   async function check(userId: string, productId: number) {
 
     const products = await getProductCart(userId, productId)
 
     if (products.length === 0) {
+      showInfo(
+        "Товар добавлен в корзину",
+        true
+      )
       await addProductCart(userId, productId)
       await loadCart()
       return
@@ -65,8 +82,18 @@ export const useCart = () => {
     const product = products[0]
 
     if (product.quantity >= 5) {
+      showInfo(
+        "Нельзя добавить больше 5 едениц товара",
+        false
+      )
       throw new Error("Максимальное количество товара в корзине: 5")
+
     }
+
+    showInfo(
+      "Количество товара увеличено на 1",
+      true
+    )
 
     await updateQuantity(
       product.id,
@@ -136,6 +163,10 @@ export const useCart = () => {
 
     console.log("Запись корзины:", product)
 
+    if (product.quantity === 5) {
+
+    }
+
 
     if (product.quantity === 1) {
 
@@ -162,7 +193,7 @@ export const useCart = () => {
     await loadCart()
   }
 
-  const actionCart = { getProductCart, addProductCart, check, loadCart, removeProduct }
+  const actionCart = { getProductCart, addProductCart, check, loadCart, removeProduct, clearCart }
 
 
   return { actionCart, }

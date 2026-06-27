@@ -1,22 +1,30 @@
-import styles from "../css/Info.module.css"
+import { useSelector } from "react-redux"
+import type { Info } from "../sliceStore/info"
+import styles from '../css/Info.module.css'
 
+export const InfoComponent = () => {
 
+  const info = useSelector(
+    (state: any) => state.info.info
+  )
 
-
-
-
-export const Info = () => {
-
-
-
-
+  console.log(info)
 
 
   return (
-    <div className={styles.info}>
-      <div className={styles.body}>
-        <h2>INFO</h2>
-      </div>
-    </div>
+    <ul className={styles.infoList}>
+      {info.map((item: Info) => (
+        <li
+          key={item.id}
+          className={
+            item.success
+              ? styles.success
+              : styles.error
+          }
+        >
+          {item.text}
+        </li>
+      ))}
+    </ul>
   )
 }

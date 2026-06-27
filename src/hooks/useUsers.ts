@@ -3,7 +3,7 @@ import { supabase } from "../supaBaseClient";
 import { resetUsers, setErrorUsers, setUsers } from "../sliceStore/user";
 import { useEffect } from "react";
 import { getUser } from "../dal/api";
-import { resetCart } from "../sliceStore/Cart";
+import { resetCart } from "../sliceStore/cart";
 
 
 export type ActionUsers = {
@@ -71,7 +71,7 @@ export const useUsers = () => {
     }
 
     dispatch(setUsers(data.user))
-    
+
     return true
   }
 
