@@ -20,6 +20,7 @@ type Props = {
 
 export function Header(props: Props) {
 
+
   const { showInfo } = useInfo();
 
   const { actionCart } = useCart()

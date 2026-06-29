@@ -64,7 +64,6 @@ export const useCart = () => {
     }
   }
 
-
   async function check(userId: string, productId: number) {
 
     const products = await getProductCart(userId, productId)

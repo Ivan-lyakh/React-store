@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux'
 
 export const ProductBody = () => {
 
+
   const allProduct = useSelector(
     (state: any) => state.products.products
   )

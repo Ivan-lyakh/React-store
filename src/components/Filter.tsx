@@ -8,6 +8,7 @@ type Props = {
 
 export const Filter = (props: Props) => {
 
+
   return (
     <div className={styles.filter}>
       <div className='container'>

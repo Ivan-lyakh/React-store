@@ -12,14 +12,15 @@ type Props = {
 
 export const ProductDetails = ({ product }: Props) => {
 
+
+
   const { showInfo } = useInfo();
+
+    const { actionCart } = useCart()
 
   const user = useSelector(
     (state: any) => state.user.users
   );
-
-
-  const { actionCart } = useCart()
 
 
   return (

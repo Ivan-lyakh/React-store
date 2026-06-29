@@ -33,6 +33,7 @@ export function controlRaiting(value: number) {
 
 export const ProductCard = ({ product }: Props) => {
 
+
   const { showInfo } = useInfo();
 
   const user = useSelector((state: RootState) => state.user.users);

@@ -14,6 +14,8 @@ type Props = {
 
 export const Auth = (props: Props) => {
 
+  console.log("Auth")
+
   const { atributes, action, reset } = useAuth()
 
   const { email, password, name, gender } = atributes
@@ -44,9 +46,6 @@ export const Auth = (props: Props) => {
               <h3>{error}</h3>
             </div>
           }
-
-
-
 
 
           <div className={styles.bodyForm}>

@@ -22,6 +22,13 @@ export const useFilter = (originalAllProduct: Product[]) => {
 
   const [selectedCategories, setSelectedCategories] = useState("")
 
+    const sort: Record<string, () => Product[]> = {
+    0: () => [...allProduct].sort((a: Product, b: Product) => b.rating.count - a.rating.count),
+    1: () => [...allProduct].sort((a: Product, b: Product) => b.id - a.id),
+    2: () => [...allProduct].sort((a: Product, b: Product) => a.price - b.price),
+    3: () => [...allProduct].sort((a: Product, b: Product) => b.price - a.price)
+  }
+
   useEffect(() => {
 
     function loadData() {
@@ -40,13 +47,6 @@ export const useFilter = (originalAllProduct: Product[]) => {
 
   }, [selectedCategories])
 
-  const sort: Record<string, () => Product[]> = {
-    0: () => [...allProduct].sort((a: Product, b: Product) => b.rating.count - a.rating.count),
-    1: () => [...allProduct].sort((a: Product, b: Product) => b.id - a.id),
-    2: () => [...allProduct].sort((a: Product, b: Product) => a.price - b.price),
-    3: () => [...allProduct].sort((a: Product, b: Product) => b.price - a.price)
-  }
-
   useEffect(() => {
 
     if (fastFilter === "") {
@@ -60,6 +60,8 @@ export const useFilter = (originalAllProduct: Product[]) => {
     dispatch(setProducts(filteredArr))
 
   }, [fastFilter])
+
+
 
   const actionFilter = { setFastFilter, setSelectedCategories }
 

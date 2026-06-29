@@ -8,9 +8,6 @@ export const InfoComponent = () => {
     (state: any) => state.info.info
   )
 
-  console.log(info)
-
-
   return (
     <ul className={styles.infoList}>
       {info.map((item: Info) => (
